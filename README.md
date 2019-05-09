@@ -101,20 +101,19 @@ for this reasons we decide to not implement paging at this version of the api
 
 ## Endpoints list
 
-any combination of the nexts urls and HTTP Verbs that are not listed are forbidden and will retrive an 404 error
 the format of this list is 
 
-* ### /url
-  * ### HTTP Verb 1
-    * ### Posible Case 1
+*  /url
+  *  HTTP Verb 1
+    * Posible Case 1
       explination
-    * ### Posible Case 2
+    * Posible Case 2
       explination
   ...
-  * ### HTTP Verb 2
-    * ### Case 1
+  *  HTTP Verb 2
+    * Posible Case 1
       explination
-    * ### Case 2
+    * Posible Case 1
       explination
 ...
  
