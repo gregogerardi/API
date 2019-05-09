@@ -7,7 +7,7 @@
 * [Responses](#responses)
 * [Error handling](#error-handling)
 * [Authentication and authorization](#authentication-and-authorization)
-* [Response body size limits](#response-body-size-limits)
+* [Response's body size limits](#response-body-size-limits)
 * [Endpoints List](#endpoints-list)
 
 ## RESTful URLs
@@ -42,7 +42,7 @@
 
 HTTP verbs, or methods, are used in compliance with their definitions under the [HTTP/1.1](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) standard.
 
-The action taken on the representation will be contextual to the type being worked on and its current state. Here's an example of how HTTP verbs map to create, read and delete operations in a particular context:
+The action taken will be contextual to the type being worked on and its current state. Here's an example of how HTTP verbs map to create, read and delete operations in a particular context:
 
 | HTTP METHOD             | POST              | GET             | DELETE      |
 | ----------------------- | ----------------- | --------------- | ----------- |
@@ -53,7 +53,7 @@ The action taken on the representation will be contextual to the type being work
 
 ## Responses
 
-Responses uses HTTP status codes to indicate they type. Bodys -if presents- are always in Json format
+Responses uses HTTP status codes to indicate they type. Bodies -if presents- are always in Json format
 We Use five simple, common response codes (besides the ones for authentication):
 
 * 404 - the resource can't be found
@@ -66,7 +66,7 @@ We Use five simple, common response codes (besides the ones for authentication):
 
 Error responses include an error HTTP status code and optionaly a message into their body as a string
 
-from the previews responses codes, the error are
+from the previous responses codes, the ones for errors are
 
 * 404 - the resource can't be found
 * 400 - Bad Request
@@ -76,23 +76,23 @@ from the previews responses codes, the error are
 
 For actions that modify the information in the server will require authorization.
 This are the ones related to POST and DELETE HTTP verbs. 
-For them, we use an implementation of Apache Shiro to autenticate and authorise users based on an username-password pair.
+For them, we use an implementation of Apache Shiro to authenticate and authorise users based on an username-password pair.
 When an unauthenticated user tries to make a POST request, the api will retrieve a 401 response with the header WWW-Authenticate set.
 This prompts the browser to show a log-in dialogue and prompt the user to enter their username and password. The request is made to the resource again, this time with the Authorization header set, containing the username and password encoded in Base64.
 When we receive this information, we check the username and password to authenticate the user and check if it is authorised to do such acction. If this is successful then the routing of the request is allowed to continue, otherwise a 403 response is returned to signify that access is denied.
 
 ### Session and cookies
 
-To remain the authentication and authorization between requests, we use cookies to save the session of the current user
+To remain the authentication and authorization alive between requests, we use cookies to save the session of the current user
 
 ## Response body size limits
 
-The only endpoints wich could retrieve an arbitrary long response are
+The only endpoints which could return an arbitrary long response are
 
 * GET http://www.example.gov/sports
 * GET http://www.example.gov/sports/nameofasport/schedules
 
-in the context of our problem, neither of them will never retrieve an large amount of data. 
+in the context of our problem, neither of them will never return a large amount of data. 
 
 * For the list of sports, it could never be larger than the number of sports that can be planned in a single multi-sport space over a week
 * For the list of schedules, it could never be larger than the number schedules that a sport can has over a week
@@ -117,7 +117,7 @@ the format of this list is
 
  
 
-Any combination of the nexts urls and HTTP Verbs that are not listed are forbidden and will retrive an 404 error
+Any combination of the nexts urls and HTTP Verbs that are not listed are forbidden and will returns an 404 error
 
 * ### /sports
   * ### GET 
